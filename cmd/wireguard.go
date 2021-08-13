@@ -235,6 +235,12 @@ func runWireGuardCreate(ctx *cmdctx.CmdContext) error {
 		fmt.Printf("Wrote WireGuard configuration to %s; load in your WireGuard client\n", filename)
 	}
 
+	if confirm("Would you like to add its to configuration ?") {
+		if err := wireguard.SetWireGuardStateForOrg(org.Slug, state); err != nil {
+			return err
+		}
+	}
+
 	return nil
 }
 

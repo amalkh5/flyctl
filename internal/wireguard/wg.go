@@ -35,7 +35,7 @@ func StateForOrg(apiClient *api.Client, org *api.Organization, regionCode string
 		return nil, err
 	}
 
-	if err := setWireGuardStateForOrg(org.Slug, stateb); err != nil {
+	if err := SetWireGuardStateForOrg(org.Slug, stateb); err != nil {
 		return nil, err
 	}
 
@@ -138,7 +138,7 @@ func setWireGuardState(s WireGuardStates) error {
 	return nil
 }
 
-func setWireGuardStateForOrg(orgSlug string, s *wg.WireGuardState) error {
+func SetWireGuardStateForOrg(orgSlug string, s *wg.WireGuardState) error {
 	states, err := GetWireGuardState()
 	if err != nil {
 		return err
